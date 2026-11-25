@@ -2,8 +2,7 @@ const produtos = [
 
   // ── BRASILEIRÃO ───────────────────────────────────────
   {
-    id: 1, liga: 'brasileirao', ligaLabel: 'Brasileirão',
-    time: 'Palmeiras', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 1, time: 'Palmeiras', categoria: 'clube', liga: 'brasileirao', pais: 'Brasil', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/palmeiras-titular.jpg',
     imgs: [
       'img camisas/palmeiras-titular.jpg',
@@ -12,8 +11,7 @@ const produtos = [
     ]
   },
   {
-    id: 2, liga: 'brasileirao', ligaLabel: 'Brasileirão',
-    time: 'Palmeiras', nome: 'Camisa Away 24/25', tipo: 'Away', precoPix: 99.99, precoCartao: 109.99,
+    id: 2, time: 'Palmeiras', categoria: 'clube', liga: 'brasileirao', pais: 'Brasil', temporada: '2024/25', versao: 'Fora', nome: 'Camisa Fora', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/palmeiras-away.jpg',
     imgs: [
       'img camisas/palmeiras-away.jpg',
@@ -21,8 +19,7 @@ const produtos = [
     ]
   },
   {
-    id: 3, liga: 'brasileirao', ligaLabel: 'Brasileirão',
-    time: 'Flamengo', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 3, time: 'Flamengo', categoria: 'clube', liga: 'brasileirao', pais: 'Brasil', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/flamengo-titular.jpg',
     imgs: [
       'img camisas/flamengo-titular.jpg',
@@ -30,8 +27,7 @@ const produtos = [
     ]
   },
   {
-    id: 4, liga: 'brasileirao', ligaLabel: 'Brasileirão',
-    time: 'Flamengo', nome: 'Camisa Away 24/25', tipo: 'Away', precoPix: 99.99, precoCartao: 109.99,
+    id: 4, time: 'Flamengo', categoria: 'clube', liga: 'brasileirao', pais: 'Brasil', temporada: '2024/25', versao: 'Fora', nome: 'Camisa Fora', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/flamengo-away.jpg',
     imgs: [
       'img camisas/flamengo-away.jpg',
@@ -41,8 +37,7 @@ const produtos = [
 
   // ── LA LIGA ───────────────────────────────────────────
   {
-    id: 5, liga: 'laliga', ligaLabel: 'La Liga',
-    time: 'Real Madrid', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 5, time: 'Real Madrid', categoria: 'clube', liga: 'laliga', pais: 'Espanha', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/real-madrid-titular.jpg',
     imgs: [
       'img camisas/real-madrid-titular.jpg',
@@ -50,8 +45,7 @@ const produtos = [
     ]
   },
   {
-    id: 6, liga: 'laliga', ligaLabel: 'La Liga',
-    time: 'Real Madrid', nome: 'Camisa Away 24/25', tipo: 'Away', precoPix: 99.99, precoCartao: 109.99,
+    id: 6, time: 'Real Madrid', categoria: 'clube', liga: 'laliga', pais: 'Espanha', temporada: '2024/25', versao: 'Fora', nome: 'Camisa Fora', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/real-madrid-away.jpg',
     imgs: [
       'img camisas/real-madrid-away.jpg',
@@ -59,8 +53,7 @@ const produtos = [
     ]
   },
   {
-    id: 7, liga: 'laliga', ligaLabel: 'La Liga',
-    time: 'Barcelona', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 7, time: 'Barcelona', categoria: 'clube', liga: 'laliga', pais: 'Espanha', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/barcelona-titular.jpg',
     imgs: [
       'img camisas/barcelona-titular.jpg',
@@ -68,8 +61,7 @@ const produtos = [
     ]
   },
   {
-    id: 8, liga: 'laliga', ligaLabel: 'La Liga',
-    time: 'Barcelona', nome: 'Camisa Away 24/25', tipo: 'Away', precoPix: 99.99, precoCartao: 109.99,
+    id: 8, time: 'Barcelona', categoria: 'clube', liga: 'laliga', pais: 'Espanha', temporada: '2024/25', versao: 'Fora', nome: 'Camisa Fora', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/barcelona-away.jpg',
     imgs: [
       'img camisas/barcelona-away.jpg',
@@ -79,8 +71,7 @@ const produtos = [
 
   // ── PREMIER LEAGUE ────────────────────────────────────
   {
-    id: 9, liga: 'premier', ligaLabel: 'Premier League',
-    time: 'Manchester City', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 9, time: 'Manchester City', categoria: 'clube', liga: 'premier', pais: 'Inglaterra', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/manchester-city-titular.jpg',
     imgs: [
       'img camisas/manchester-city-titular.jpg',
@@ -88,8 +79,7 @@ const produtos = [
     ]
   },
   {
-    id: 10, liga: 'premier', ligaLabel: 'Premier League',
-    time: 'Arsenal', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 10, time: 'Arsenal', categoria: 'clube', liga: 'premier', pais: 'Inglaterra', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/arsenal-titular.jpg',
     imgs: [
       'img camisas/arsenal-titular.jpg',
@@ -97,8 +87,7 @@ const produtos = [
     ]
   },
   {
-    id: 11, liga: 'premier', ligaLabel: 'Premier League',
-    time: 'Chelsea', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 11, time: 'Chelsea', categoria: 'clube', liga: 'premier', pais: 'Inglaterra', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/chelsea-titular.jpg',
     imgs: [
       'img camisas/chelsea-titular.jpg',
@@ -108,8 +97,7 @@ const produtos = [
 
   // ── BUNDESLIGA ────────────────────────────────────────
   {
-    id: 12, liga: 'bundesliga', ligaLabel: 'Bundesliga',
-    time: 'Bayern de Munique', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 12, time: 'Bayern de Munique', categoria: 'clube', liga: 'bundesliga', pais: 'Alemanha', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/bayern-titular.jpg',
     imgs: [
       'img camisas/bayern-titular.jpg',
@@ -117,8 +105,7 @@ const produtos = [
     ]
   },
   {
-    id: 13, liga: 'bundesliga', ligaLabel: 'Bundesliga',
-    time: 'Bayern de Munique', nome: 'Camisa Away 24/25', tipo: 'Away', precoPix: 99.99, precoCartao: 109.99,
+    id: 13, time: 'Bayern de Munique', categoria: 'clube', liga: 'bundesliga', pais: 'Alemanha', temporada: '2024/25', versao: 'Fora', nome: 'Camisa Fora', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/bayern-away.jpg',
     imgs: [
       'img camisas/bayern-away.jpg',
@@ -128,8 +115,7 @@ const produtos = [
 
   // ── SELEÇÕES ──────────────────────────────────────────
   {
-    id: 14, liga: 'selecoes', ligaLabel: 'Seleções',
-    time: 'Brasil', nome: 'Camisa Home 2026', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 14, time: 'Brasil', categoria: 'selecao', liga: 'selecoes', pais: 'Brasil', temporada: '2026', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/brasil-titular.jpg',
     imgs: [
       'img camisas/brasil-titular.jpg',
@@ -137,8 +123,7 @@ const produtos = [
     ]
   },
   {
-    id: 15, liga: 'selecoes', ligaLabel: 'Seleções',
-    time: 'Argentina', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 15, time: 'Argentina', categoria: 'selecao', liga: 'selecoes', pais: 'Argentina', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/argentina-titular.jpg',
     imgs: [
       'img camisas/argentina-titular.jpg',
@@ -146,8 +131,7 @@ const produtos = [
     ]
   },
   {
-    id: 16, liga: 'selecoes', ligaLabel: 'Seleções',
-    time: 'Inglaterra', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 16, time: 'Inglaterra', categoria: 'selecao', liga: 'selecoes', pais: 'Inglaterra', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/inglaterra-titular.jpg',
     imgs: [
       'img camisas/inglaterra-titular.jpg',
@@ -155,8 +139,7 @@ const produtos = [
     ]
   },
   {
-    id: 17, liga: 'selecoes', ligaLabel: 'Seleções',
-    time: 'Espanha', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 17, time: 'Espanha', categoria: 'selecao', liga: 'selecoes', pais: 'Espanha', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/espanha-titular.jpg',
     imgs: [
       'img camisas/espanha-titular.jpg',
@@ -164,8 +147,7 @@ const produtos = [
     ]
   },
   {
-    id: 18, liga: 'selecoes', ligaLabel: 'Seleções',
-    time: 'Portugal', nome: 'Camisa Home 24/25', tipo: 'Home', precoPix: 99.99, precoCartao: 109.99,
+    id: 18, time: 'Portugal', categoria: 'selecao', liga: 'selecoes', pais: 'Portugal', temporada: '2024/25', versao: 'Casa', nome: 'Camisa Casa', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/portugal-titular.jpg',
     imgs: [
       'img camisas/portugal-titular.jpg',
@@ -173,8 +155,7 @@ const produtos = [
     ]
   },
   {
-    id: 19, liga: 'selecoes', ligaLabel: 'Seleções',
-    time: 'Alemanha', nome: 'Camisa Retrô 1990', tipo: 'Retrô', precoPix: 99.99, precoCartao: 109.99,
+    id: 19, time: 'Alemanha', categoria: 'selecao', liga: 'selecoes', pais: 'Alemanha', temporada: '1990', versao: 'Retrô', nome: 'Camisa Retrô 1990', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/alemanha-titular.jpg',
     imgs: [
       'img camisas/alemanha-titular.jpg',
@@ -182,8 +163,7 @@ const produtos = [
     ]
   },
   {
-    id: 20, liga: 'selecoes', ligaLabel: 'Seleções',
-    time: 'França', nome: 'Camisa Retrô 1998', tipo: 'Retrô', precoPix: 99.99, precoCartao: 109.99,
+    id: 20, time: 'França', categoria: 'selecao', liga: 'selecoes', pais: 'França', temporada: '1998', versao: 'Retrô', nome: 'Camisa Retrô 1998', preco: 130, disponibilidade: 'encomenda', tamanhos: [],
     img: 'img camisas/franca-titular.jpg',
     imgs: [
       'img camisas/franca-titular.jpg',

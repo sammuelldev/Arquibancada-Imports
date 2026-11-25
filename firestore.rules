@@ -1,0 +1,58 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isCatalogAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/catalogAdmins/$(request.auth.uid));
+    }
+
+    function validProduct(productId) {
+      let data = request.resource.data;
+      return data.keys().hasOnly([
+          'nome', 'time', 'liga', 'competicao', 'temporada', 'versao',
+          'fabricante', 'preco', 'disponibilidade', 'img', 'imgs', 'imagePaths'
+        ])
+        && data.keys().hasAll([
+          'nome', 'time', 'liga', 'competicao', 'temporada', 'versao',
+          'fabricante', 'preco', 'disponibilidade', 'img', 'imgs', 'imagePaths'
+        ])
+        && data.nome is string && data.nome.size() > 0 && data.nome.size() <= 120
+        && data.time is string && data.time.size() > 0 && data.time.size() <= 100
+        && data.liga in ['brasileirao', 'laliga', 'premier', 'bundesliga', 'seriea', 'ligue1', 'selecoes', 'outros']
+        && data.competicao is string && data.competicao.size() <= 100
+        && data.temporada is string && data.temporada.size() > 0 && data.temporada.size() <= 40
+        && data.versao is string && data.versao.size() > 0 && data.versao.size() <= 60
+        && data.fabricante is string && data.fabricante.size() > 0 && data.fabricante.size() <= 80
+        && data.preco is number && data.preco > 0
+        && data.disponibilidade in ['encomenda', 'pronta_entrega']
+        && data.img is string && data.img.size() > 0
+        && data.imgs is list && data.imgs.size() == 4
+        && data.imgs[0] is string && data.imgs[1] is string
+        && data.imgs[2] is string && data.imgs[3] is string
+        && data.img == data.imgs[0]
+        && data.imagePaths is list && data.imagePaths.size() == 4
+        && data.imagePaths[0] is string && data.imagePaths[0].matches('produtos/' + productId + '/[^/]+')
+        && data.imagePaths[1] is string && data.imagePaths[1].matches('produtos/' + productId + '/[^/]+')
+        && data.imagePaths[2] is string && data.imagePaths[2].matches('produtos/' + productId + '/[^/]+')
+        && data.imagePaths[3] is string && data.imagePaths[3].matches('produtos/' + productId + '/[^/]+');
+    }
+
+    match /catalogos/rainhajin-femininas-5070410/itens/{id} {
+      allow read: if true;
+    }
+    match /catalogos/rainhajin-femininas-5070410/fichas/{id} {
+      allow get: if true;
+    }
+
+    match /catalogAdmins/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid;
+      allow list, create, update, delete: if false;
+    }
+
+    match /produtos/{productId} {
+      allow read: if true;
+      allow create, update: if isCatalogAdmin() && validProduct(productId);
+      allow delete: if isCatalogAdmin();
+    }
+  }
+}

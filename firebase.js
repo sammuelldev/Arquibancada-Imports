@@ -1,17 +1,17 @@
 
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import app, { useEmulators } from "./firebase-app.js";
+import { getAuth, connectAuthEmulator } from "firebase/auth";
+import { connectFirestoreEmulator, getFirestore } from "firebase/firestore";
+import { connectStorageEmulator, getStorage } from "firebase/storage";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAxLu0J0AuuF3evgDyPM1UFYrV_FrO71Eo",
-  authDomain: "arquibancada-imports.firebaseapp.com",
-  projectId: "arquibancada-imports",
-  storageBucket: "arquibancada-imports.firebasestorage.app",
-  messagingSenderId: "309684918456",
-  appId: "1:309684918456:web:229d754d3b10a8ea723c4d"
-};
-
-const app = initializeApp(firebaseConfig);
-
+export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const storage = getStorage(app);
+
+if (useEmulators) {
+  connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true });
+  connectFirestoreEmulator(db, "127.0.0.1", 8080);
+  connectStorageEmulator(storage, "127.0.0.1", 9199);
+}
+
 export default app;

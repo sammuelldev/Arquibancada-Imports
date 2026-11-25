@@ -3,102 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arquibancada Store — Camisas Premium de Futebol</title>
+  <title>Arquibancada Store | Camisas de futebol</title>
   <meta name="description" content="Camisas dos maiores clubes do mundo. Qualidade premium, atendimento via WhatsApp e pagamento no Pix com desconto.">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Arquibancada Store — Camisas Premium de Futebol">
+  <meta property="og:title" content="Arquibancada Store | Camisas de futebol">
   <meta property="og:description" content="Camisas dos maiores clubes do mundo. Qualidade premium, atendimento via WhatsApp e Pix com desconto.">
   <meta property="og:image" content="hero-bg.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap">
+  <script type="importmap">
+    {"imports": {
+      "firebase/app": "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js",
+      "firebase/firestore/lite": "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore-lite.js"
+    }}
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#mainContent">Pular para o conteúdo</a>
 
   <!-- NAV -->
-  <nav>
-    <a href="#" class="logo-img-wrap">
+  <nav class="site-nav" aria-label="Navegação principal">
+    <a href="#inicio" class="logo-img-wrap" aria-label="Arquibancada Store, início">
       <img src="logo.png" alt="Arquibancada Store" class="nav-logo">
     </a>
-    <div class="nav-links">
-      <a href="#" onclick="setFilter('brasileirao', this); return false;" title="Brasileirão">
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="leagueShortcuts" aria-label="Abrir categorias">
+      <span class="menu-icon" aria-hidden="true">☰</span>
+      <span class="menu-toggle-label">Categorias</span>
+    </button>
+    <div class="nav-links" id="leagueShortcuts">
+      <button class="league-link nav-femininas" type="button" data-filter="femininas" aria-pressed="false">Femininas</button>
+      <button type="button" class="league-link" data-filter="brasileirao" aria-label="Brasileirão" aria-pressed="false" title="Brasileirão">
         <img src="icon-brasileirao.png" alt="Brasileirão" class="liga-icon">
-      </a>
-      <a href="#" onclick="setFilter('laliga', this); return false;" title="La Liga">
+      </button>
+      <button type="button" class="league-link" data-filter="laliga" aria-label="La Liga" aria-pressed="false" title="La Liga">
         <img src="icon-laliga.png" alt="La Liga" class="liga-icon">
-      </a>
-      <a href="#" onclick="setFilter('premier', this); return false;" title="Premier League">
+      </button>
+      <button type="button" class="league-link" data-filter="premier" aria-label="Premier League" aria-pressed="false" title="Premier League">
         <img src="icon-premier.png" alt="Premier League" class="liga-icon">
-      </a>
-      <a href="#" onclick="setFilter('bundesliga', this); return false;" title="Bundesliga">
+      </button>
+      <button type="button" class="league-link" data-filter="bundesliga" aria-label="Bundesliga" aria-pressed="false" title="Bundesliga">
         <img src="icon-bundesliga.png" alt="Bundesliga" class="liga-icon">
-      </a>
-      <a href="#" onclick="setFilter('seriea', this); return false;" title="Série A">
+      </button>
+      <button type="button" class="league-link" data-filter="seriea" aria-label="Serie A" aria-pressed="false" title="Serie A">
         <img src="icon-seriea.png" alt="Série A" class="liga-icon">
-      </a>
-      <a href="#" onclick="setFilter('ligue1', this); return false;" title="Ligue 1">
+      </button>
+      <button type="button" class="league-link" data-filter="ligue1" aria-label="Ligue 1" aria-pressed="false" title="Ligue 1">
         <img src="icon-ligue1.png" alt="Ligue 1" class="liga-icon">
-      </a>
-      <a href="#" onclick="setFilter('selecoes', this); return false;" title="Seleções">
+      </button>
+      <button type="button" class="league-link" data-filter="selecoes" aria-label="Seleções" aria-pressed="false" title="Seleções">
         <img src="icon-selecoes.png" alt="Seleções" class="liga-icon">
-      </a>
+      </button>
     </div>
     <div class="nav-right">
       <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Buscar time..." id="searchInput" oninput="filterProducts()">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <label class="sr-only" for="searchInput">Buscar time ou camisa</label>
+        <input type="search" placeholder="Buscar time ou camisa" id="searchInput" oninput="filterProducts()">
       </div>
-      <button class="nav-cart-btn" onclick="openCart()" aria-label="Carrinho">
+      <button class="nav-cart-btn" type="button" onclick="openCart()" aria-label="Abrir carrinho">
         🛒
         <span class="cart-badge" id="cartBadge" style="display:none">0</span>
       </button>
     </div>
   </nav>
 
+  <main id="mainContent">
   <!-- HERO -->
-  <div class="hero">
+  <section class="hero" id="inicio" aria-labelledby="heroTitle">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-logo-wrap">
-        <img src="logo.png" alt="Arquibancada Store" class="hero-logo">
-      </div>
-      <p>Camisas dos maiores clubes do mundo. Qualidade premium e atendimento pelo WhatsApp.</p>
+      <p class="hero-eyebrow">Arquibancada Store</p>
+      <h1 id="heroTitle">Vista a camisa<br>do seu time.</h1>
+      <p>Clubes brasileiros e internacionais, seleções e modelos retrô. Escolha sua próxima camisa e fale com a loja pelo WhatsApp.</p>
+      <a class="hero-cta" href="#catalogo">Ver camisas</a>
       <div class="hero-badges">
-        <span class="badge green">💬 Suporte via WhatsApp</span>
-        <span class="badge">💸 Pix com Desconto</span>
+        <span class="badge">Pix ou cartão em até 3x</span>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- FILTER BAR -->
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="setFilter('todos', this)">
-      <span>🌎 Todos</span>
+  <nav class="filter-bar" aria-label="Filtrar catálogo por competição">
+    <button class="filter-btn active" type="button" data-filter="todos" aria-pressed="true">
+      <span>Todos</span>
     </button>
-    <button class="filter-btn" onclick="setFilter('brasileirao', this)" title="Brasileirão">
+    <button class="filter-btn filter-text-btn" type="button" data-filter="femininas" aria-pressed="false">Femininas</button>
+    <button class="filter-btn" type="button" data-filter="brasileirao" aria-label="Brasileirão" aria-pressed="false" title="Brasileirão">
       <img src="icon-brasileirao.png" alt="Brasileirão" class="filter-icon">
     </button>
-    <button class="filter-btn" onclick="setFilter('laliga', this)" title="La Liga">
+    <button class="filter-btn" type="button" data-filter="laliga" aria-label="La Liga" aria-pressed="false" title="La Liga">
       <img src="icon-laliga.png" alt="La Liga" class="filter-icon">
     </button>
-    <button class="filter-btn" onclick="setFilter('premier', this)" title="Premier League">
+    <button class="filter-btn" type="button" data-filter="premier" aria-label="Premier League" aria-pressed="false" title="Premier League">
       <img src="icon-premier.png" alt="Premier League" class="filter-icon">
     </button>
-    <button class="filter-btn" onclick="setFilter('bundesliga', this)" title="Bundesliga">
+    <button class="filter-btn" type="button" data-filter="bundesliga" aria-label="Bundesliga" aria-pressed="false" title="Bundesliga">
       <img src="icon-bundesliga.png" alt="Bundesliga" class="filter-icon">
     </button>
-    <button class="filter-btn" onclick="setFilter('seriea', this)" title="Série A">
+    <button class="filter-btn" type="button" data-filter="seriea" aria-label="Serie A" aria-pressed="false" title="Serie A">
       <img src="icon-seriea.png" alt="Série A" class="filter-icon">
     </button>
-    <button class="filter-btn" onclick="setFilter('ligue1', this)" title="Ligue 1">
+    <button class="filter-btn" type="button" data-filter="ligue1" aria-label="Ligue 1" aria-pressed="false" title="Ligue 1">
       <img src="icon-ligue1.png" alt="Ligue 1" class="filter-icon">
     </button>
-    <button class="filter-btn" onclick="setFilter('selecoes', this)" title="Seleções">
+    <button class="filter-btn" type="button" data-filter="selecoes" aria-label="Seleções" aria-pressed="false" title="Seleções">
       <img src="icon-selecoes.png" alt="Seleções" class="filter-icon">
     </button>
-  </div>
+    <button class="filter-btn filter-text-btn" type="button" data-filter="kits_treino" aria-pressed="false">Kits de treino</button>
+    <button class="filter-btn filter-text-btn" type="button" data-filter="kits_camisa_calcao" aria-pressed="false">Kits de camisa e calção</button>
+    <button class="filter-btn filter-text-btn" type="button" data-filter="retro" aria-pressed="false">Retrô</button>
+    <button class="filter-btn filter-text-btn" type="button" data-filter="outros" aria-pressed="false">Outros</button>
+  </nav>
 
   <!-- AVISO WHATSAPP -->
   <div class="wpp-notice">
@@ -107,96 +126,93 @@
         <img src="icon-wpp.png" alt="WhatsApp" class="wpp-notice-icon">
       </div>
       <div class="wpp-notice-center">
-        <div class="wpp-notice-title">⚠️ PEDIDOS FINALIZADOS VIA WHATSAPP</div>
-        <div class="wpp-notice-text">Após escolher sua camisa, o fechamento é realizado diretamente pelo WhatsApp para garantir um atendimento mais rápido, seguro e personalizado.</div>
+      <div class="wpp-notice-title">Pedidos pelo WhatsApp</div>
+        <div class="wpp-notice-text">Escolha a camisa e confirme com a loja o tamanho e a disponibilidade antes de fechar o pedido.</div>
         <div class="wpp-notice-tags">
-          <span>💬 Atendimento rápido</span>
-          <span>📦 Suporte durante todo o pedido</span>
-          <span>🔒 Compra segura</span>
+          <span>💬 Atendimento direto</span>
+          <span>Cartão em até 3x</span>
         </div>
       </div>
-      <a class="wpp-notice-btn" href="https://wa.me/5581998628808" target="_blank">Falar Agora</a>
+      <a class="wpp-notice-btn" href="https://wa.me/5581998628808" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
     </div>
   </div>
 
   <!-- QUEM SOMOS -->
-  <section class="quem-somos">
-    <div class="qs-track" id="qsTrack">
-
-      <div class="qs-slide qs-bg-1">
-        <div class="qs-overlay"></div>
-        <div class="qs-content">
-          <h2 class="qs-title">Mais que<br><em>Futebol</em></h2>
-          <p class="qs-text">Futebol não é só esporte. É identidade, é raiz, é torcida que vibra junto. A Arquibancada Store nasceu dessa paixão — pra você vestir o que sente com qualidade de verdade.</p>
-          <a class="qs-btn" href="#catalogo" onclick="scrollToCatalog()">Ver Catálogo</a>
-        </div>
-      </div>
-
-      <div class="qs-slide qs-bg-2">
-        <div class="qs-overlay"></div>
-        <div class="qs-content">
-          <h2 class="qs-title">Qualidade<br><em>Premium</em></h2>
-          <p class="qs-text">Cada camisa é selecionada com critério. Tecido respirável, acabamento impecável e estampa fiel ao original. Você merece o melhor — e a gente entrega isso.</p>
-          <a class="qs-btn" href="#catalogo" onclick="scrollToCatalog()">Ver Catálogo</a>
-        </div>
-      </div>
-
-      <div class="qs-slide qs-bg-3">
-        <div class="qs-overlay"></div>
-        <div class="qs-content">
-          <h2 class="qs-title">Entrega<br><em>Rápida</em></h2>
-          <p class="qs-text">Comprou, vai chegar. Envio ágil, rastreamento e suporte direto pelo WhatsApp. Atendimento humano, sem robô, do começo ao fim do pedido.</p>
-          <a class="qs-btn" href="https://wa.me/5581998628808" target="_blank">Falar no WhatsApp</a>
-        </div>
-      </div>
-
-      <div class="qs-slide qs-bg-4">
-        <div class="qs-overlay"></div>
-        <div class="qs-content">
-          <h2 class="qs-title">Arquibancada<br><em>é Sentimento</em></h2>
-          <p class="qs-text">Da torcida organizada ao sofá de casa. Da fumaça colorida ao grito no estádio. Ser da Arquibancada Store é carregar o futebol onde for.</p>
-          <a class="qs-btn" href="#catalogo" onclick="scrollToCatalog()">Ver Catálogo</a>
-        </div>
-      </div>
-
-    </div>
-    <button class="qs-arrow qs-prev" onclick="slideQS(-1)" aria-label="Anterior">&#8592;</button>
-    <button class="qs-arrow qs-next" onclick="slideQS(1)" aria-label="Próximo">&#8594;</button>
-    <div class="qs-dots" id="qsDots">
-      <span class="qs-dot active" onclick="goQS(0)"></span>
-      <span class="qs-dot" onclick="goQS(1)"></span>
-      <span class="qs-dot" onclick="goQS(2)"></span>
-      <span class="qs-dot" onclick="goQS(3)"></span>
+  <section class="quem-somos" aria-labelledby="quemSomosTitle">
+    <div class="qs-image" role="img" aria-label="Camisas de futebol em um estádio" ></div>
+    <div class="qs-content">
+      <p class="section-eyebrow">A loja</p>
+      <h2 class="qs-title" id="quemSomosTitle">Feita por quem vive a torcida.</h2>
+      <p class="qs-text">A Arquibancada Store reúne camisas de clubes, seleções e modelos retrô para quem gosta de levar o futebol para além do estádio. A escolha e a confirmação do pedido acontecem pelo WhatsApp.</p>
+      <a class="qs-btn" href="https://wa.me/5581998628808" target="_blank" rel="noopener noreferrer">Falar com a loja</a>
     </div>
   </section>
 
+  <section class="tagline-reveal" aria-label="A camisa também conta uma história">
+    <p class="tagline-copy" id="taglineCopy">O futebol também se veste. Vista as cores que fazem parte da sua história.</p>
+  </section>
+
   <!-- CATÁLOGO -->
-  <div class="main" id="catalogo">
+  <section class="main" id="catalogo" aria-labelledby="catalogTitle">
+    <div class="featured-teams" id="featuredTeamsSection" hidden>
+      <div class="featured-heading">
+        <p class="section-eyebrow">Atalhos por clube</p>
+        <h2>Clubes em destaque</h2>
+      </div>
+      <div class="featured-team-list" id="featuredTeams" aria-label="Clubes em destaque"></div>
+    </div>
     <div class="section-header">
       <div class="section-left">
         <span class="section-eyebrow" id="catalogEyebrow">🛍️ Catálogo</span>
-        <div class="section-title" id="catalogTitle">TODOS OS PRODUTOS</div>
+        <h2 class="section-title" id="catalogTitle">TODOS OS PRODUTOS</h2>
       </div>
-      <div class="count" id="countLabel">0 produtos</div>
+      <div class="count" id="countLabel" hidden>0 produtos</div>
     </div>
-    <div class="grid" id="grid"></div>
-    <div class="pagination" id="pagination"></div>
-  </div>
+    <p class="catalog-load-status" id="catalogLoadStatus" role="status">Carregando catálogo…</p>
+    <button type="button" class="catalog-clear" id="catalogRetry" hidden>Tentar novamente</button>
+    <button type="button" class="catalog-filter-toggle" id="filterToggle" aria-expanded="false" aria-controls="filterPanel">Filtros</button>
+    <button type="button" class="catalog-filter-overlay" id="filterOverlay" aria-label="Fechar filtros" tabindex="-1" hidden></button>
+    <div class="catalog-layout">
+      <aside class="catalog-filters" id="filterPanel" aria-label="Filtros do catálogo">
+        <div class="catalog-filters-heading">
+          <h3>Filtros</h3>
+          <button class="catalog-filter-close" type="button" id="filterClose">Ver resultados</button>
+        </div>
+        <label class="catalog-field">Buscar camisa
+          <input type="search" id="catalogSearch" placeholder="Time, temporada ou código" oninput="filterProducts(this.value)">
+        </label>
+        <div id="catalogFacets"></div>
+        <label class="catalog-field">Ordenar por
+          <select id="catalogOrder">
+            <option value="nome">Nome (A–Z)</option>
+            <option value="menor">Menor preço</option>
+            <option value="maior">Maior preço</option>
+          </select>
+        </label>
+        <button type="button" class="catalog-clear" onclick="clearCatalogFilters()">Limpar filtros</button>
+      </aside>
+      <div class="catalog-results">
+        <div class="grid" id="grid"></div>
+        <nav class="pagination" id="pagination" aria-label="Páginas do catálogo"></nav>
+      </div>
+    </div>
+  </section>
+  </main>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo-wrap">
       <img src="logo.png" alt="Arquibancada Store" class="footer-logo-img">
     </div>
-    <p class="footer-copy">© 2025 Arquibancada Store · Todos os direitos reservados</p>
-    <a class="footer-wpp" href="https://wa.me/5581998628808" target="_blank">
+    <p class="footer-copy">© <span id="copyrightYear">2026</span> Arquibancada Store · Todos os direitos reservados</p>
+    <a class="footer-wpp" href="https://wa.me/5581998628808" target="_blank" rel="noopener noreferrer">
       <img src="icon-wpp.png" alt="WhatsApp" class="wpp-icon">
-      <span>(81) 9 98628-808</span>
+      <span>(81) 99862-8808</span>
     </a>
   </footer>
 
   <!-- BOTÃO FLUTUANTE WHATSAPP -->
-  <a class="wpp-float" href="https://wa.me/5581998628808" target="_blank" aria-label="Falar no WhatsApp">
+  <a class="wpp-float" href="https://wa.me/5581998628808" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="#fff">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
@@ -206,11 +222,11 @@
   <div class="cart-toast" id="cartToast"></div>
 
   <!-- CARRINHO -->
-  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-  <div class="cart-drawer" id="cartDrawer">
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()" aria-hidden="true"></div>
+  <section class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
     <div class="cart-header">
-      <div class="cart-title">🛒 Carrinho</div>
-      <button class="cart-close" onclick="closeCart()">✕</button>
+      <h2 class="cart-title" id="cartTitle">🛒 Carrinho</h2>
+      <button class="cart-close" type="button" onclick="closeCart()" aria-label="Fechar carrinho">✕</button>
     </div>
     <div class="cart-items" id="cartItems">
       <div class="cart-empty">
@@ -220,19 +236,22 @@
     </div>
     <div class="cart-footer">
       <div class="cart-total-row">
-        <span>Total no Pix</span>
+        <span>Total do pedido</span>
         <span class="cart-total" id="cartTotal">R$ 0,00</span>
       </div>
+      <p class="cart-subtotal-note" id="cartSubtotalNote" hidden></p>
       <button class="cart-checkout-btn" onclick="checkoutCart()">
         💬 Finalizar pelo WhatsApp
       </button>
     </div>
-  </div>
+  </section>
 
   <!-- PÁGINA DO PRODUTO -->
-  <div class="product-page" id="productPage"></div>
+  <div class="product-page" id="productPage" role="dialog" aria-modal="true" aria-label="Detalhes do produto" aria-hidden="true"></div>
 
-  <script src="produtos.js"></script>
+  <script src="catalogo-config.js"></script>
+  <script src="catalog-search.js"></script>
   <script src="script.js"></script>
+  <script type="module" src="./storefront-catalog.js"></script>
 </body>
 </html>

@@ -1,5 +1,19 @@
 
 node_modules/
+dist/
 .env
 .env.*
 !.env.example
+/data/catalogo-local/
+
+# Credenciais administrativas e artefatos locais
+*service-account*.json
+*serviceAccount*.json
+*-firebase-adminsdk-*.json
+application_default_credentials.json
+firebase-debug.log*
+firestore-debug.log*
+storage-debug.log*
+.firebase/
+.playwright-cli/
+output/playwright/

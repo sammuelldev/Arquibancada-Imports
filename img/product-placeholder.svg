@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Imagem do produto pendente</title>
+  <desc id="desc">Área reservada para uma fotografia confirmada da camisa</desc>
+  <rect width="640" height="640" fill="#181818"/>
+  <path d="m242 150 78 34 78-34 76 48-47 76-35-19v199H248V255l-35 19-47-76 76-48Z" fill="#1f1f1f" stroke="#00c853" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M284 175c5 23 18 35 36 35s31-12 36-35" fill="none" stroke="#00c853" stroke-width="8" stroke-linecap="round"/>
+  <text x="320" y="520" fill="#f0f0f0" font-family="Manrope, sans-serif" font-size="24" text-anchor="middle">Imagem a cadastrar</text>
+</svg>

@@ -1,0 +1,25 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isCatalogAdmin() {
+      return request.auth != null
+        && firestore.exists(/databases/(default)/documents/catalogAdmins/$(request.auth.uid));
+    }
+
+    match /catalogos/rainhajin-femininas-5070410/{productId}/{photo} {
+      allow get: if true;
+    }
+
+    match /produtos/{productId}/{fileName} {
+      allow read: if true;
+      allow create, update: if isCatalogAdmin()
+        && request.resource.size <= 10 * 1024 * 1024
+        && request.resource.contentType.matches('image/(jpeg|png|webp)');
+      allow delete: if isCatalogAdmin();
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
